@@ -19,7 +19,9 @@
 
 body {
   font-size: 1.6rem;
-  background: #121214;
+  /* background: #121214; */
+  background-image: url(../../public/Wallpaper-2560x1600.jpg);
+  background-size: cover;
 
   display: flex;
   place-items: center;
@@ -41,7 +43,10 @@ body {
   margin: 0 auto;
 
   padding: 2.8rem 6rem 4rem;
-  background: #202024;
+  /* background: #202024; */
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
   border: 0.1rem solid #323238;
   border-radius: 0.6rem;
 }
