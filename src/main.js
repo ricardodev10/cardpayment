@@ -25,7 +25,6 @@ function setCardType(type) {
 
   ccLogo.setAttribute("src", `cc-${type}.svg`);
 }
-// setCardType("");
 
 const securityCode = document.querySelector("#security-code");
 const securityCodePattern = {
@@ -50,9 +49,6 @@ const expirationDatePattern = {
   },
 };
 const expirationDateMasked = IMask(expirationDate, expirationDatePattern);
-
-// Visa: ^4[0-9]{15}$
-// Mastercard: ^((5(([1-2]|[4-5])[0-9]{8}|0((1|6)([0-9]{7}))|3(0(4((0|[2-9])[0-9]{5})|([0-3]|[5-9])[0-9]{6})|[1-9][0-9]{7})))|((508116)\\d{4,10})|((502121)\\d{4,10})|((589916)\\d{4,10})|(2[0-9]{15})|(67[0-9]{14})|(506387)\\d{4,10})
 
 const cardNumber = document.querySelector("#card-number");
 const cardNumberPattern = {
@@ -98,3 +94,52 @@ const cardNumberPattern = {
   },
 };
 const cardNumberMasked = IMask(cardNumber, cardNumberPattern);
+
+const addButton = document.querySelector("#add-card");
+addButton.addEventListener("click", () => {
+  alert("Cartão adicionado!");
+});
+
+document.querySelector("form").addEventListener("submit", (event) => {
+  event.preventDefault();
+});
+
+const cardHolder = document.querySelector("#card-holder");
+cardHolder.addEventListener("input", () => {
+  const ccHolder = document.querySelector(".cc-holder .value");
+
+  ccHolder.innerText =
+    cardHolder.value.length === 0 ? "FULANO DA SILVA" : cardHolder.value;
+});
+
+securityCodeMasked.on("accept", () => {
+  updateSecurityCode(securityCodeMasked.value);
+});
+
+function updateSecurityCode(code) {
+  const ccSecurity = document.querySelector(".cc-security .value");
+
+  ccSecurity.innerText = securityCode.value.length === 0 ? "123" : code;
+}
+
+cardNumberMasked.on("accept", () => {
+  const cardType = cardNumberMasked.masked.currentMask.cardtype;
+  setCardType(cardType);
+  updateCardNumber(cardNumberMasked.value);
+});
+
+function updateCardNumber(number) {
+  const ccNumber = document.querySelector(".cc-number");
+
+  ccNumber.innerText = number.length === 0 ? "1234 5678 9012 3456" : number;
+}
+
+expirationDateMasked.on("accept", () => {
+  updateExpirationDate(expirationDateMasked.value);
+});
+
+function updateExpirationDate(date) {
+  const ccExpiration = document.querySelector(".cc-expiration .value");
+
+  ccExpiration.innerText = date.length === 0 ? "02/32" : date;
+}
