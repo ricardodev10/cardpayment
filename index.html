@@ -139,23 +139,23 @@
       <form action="">
         <div class="input-wrapper">
           <label for="card-number">Número do cartão</label>
-          <input id="card-number" />
+          <input id="card-number" required />
         </div>
 
         <div class="input-wrapper">
           <label for="card-holder">Nome do titular</label>
-          <input id="card-holder" maxlength="30" />
+          <input id="card-holder" maxlength="30" required />
         </div>
 
         <div class="flex">
           <div class="input-wrapper">
             <label for="expiration-date">Expiração</label>
-            <input id="expiration-date" inputmode="numeric" />
+            <input id="expiration-date" inputmode="numeric" required />
           </div>
 
           <div class="input-wrapper">
             <label for="security-code">CVC</label>
-            <input id="security-code" inputmode="numeric" />
+            <input id="security-code" inputmode="numeric" required />
           </div>
         </div>
 
