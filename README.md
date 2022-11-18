@@ -54,7 +54,7 @@ You can view the layout of the project through [THIS LINK](https://www.figma.com
 
 ## 🚀 Deploy
 
-<!-- https://spa-universe-ricardodev10.netlify.app/ -->
+https://cardpayment-ricardodev10.vercel.app/
 
 ## 🙂 Feedback
 
