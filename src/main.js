@@ -27,30 +27,11 @@ function setCardType(type) {
 }
 
 const securityCode = document.querySelector("#security-code");
-const securityCodePattern = {
-  mask: "0000",
-};
-const securityCodeMasked = IMask(securityCode, securityCodePattern);
-
 const expirationDate = document.querySelector("#expiration-date");
-const expirationDatePattern = {
-  mask: "MM{/}YY",
-  blocks: {
-    MM: {
-      mask: IMask.MaskedRange,
-      from: 1,
-      to: 12,
-    },
-    YY: {
-      mask: IMask.MaskedRange,
-      from: String(new Date().getFullYear()).slice(2),
-      to: String(new Date().getFullYear() + 10).slice(2),
-    },
-  },
-};
-const expirationDateMasked = IMask(expirationDate, expirationDatePattern);
-
 const cardNumber = document.querySelector("#card-number");
+const cardHolder = document.querySelector("#card-holder");
+const addButton = document.querySelector("#add-card");
+
 const cardNumberPattern = {
   mask: [
     {
@@ -92,28 +73,53 @@ const cardNumberPattern = {
     return foundMask;
   },
 };
+
+const cardHolderPattern = {
+  mask: /[a-zA-Z\s]$/,
+};
+
+const expirationDatePattern = {
+  mask: "MM{/}YY",
+  blocks: {
+    MM: {
+      mask: IMask.MaskedRange,
+      from: 1,
+      to: 12,
+    },
+    YY: {
+      mask: IMask.MaskedRange,
+      from: String(new Date().getFullYear()).slice(2),
+      to: String(new Date().getFullYear() + 10).slice(2),
+    },
+  },
+};
+
+const securityCodePattern = {
+  mask: "0000",
+};
+
 const cardNumberMasked = IMask(cardNumber, cardNumberPattern);
+const cardHolderMasked = IMask(cardHolder, cardHolderPattern);
+const expirationDateMasked = IMask(expirationDate, expirationDatePattern);
+const securityCodeMasked = IMask(securityCode, securityCodePattern);
 
-const addButton = document.querySelector("#add-card");
-addButton.addEventListener("click", () => {
-  alert("Cartão adicionado!");
-});
+function updateCardNumber(number) {
+  const ccNumber = document.querySelector(".cc-number");
 
-document.querySelector("form").addEventListener("submit", (event) => {
-  event.preventDefault();
-});
+  ccNumber.innerText = number.length === 0 ? "1234 5678 9012 3456" : number;
+}
 
-const cardHolder = document.querySelector("#card-holder");
-cardHolder.addEventListener("input", () => {
+function updateCardHolder(name) {
   const ccHolder = document.querySelector(".cc-holder .value");
 
-  ccHolder.innerText =
-    cardHolder.value.length === 0 ? "FULANO DA SILVA" : cardHolder.value;
-});
+  ccHolder.innerText = cardHolder.value.length === 0 ? "FULANO DA SILVA" : name;
+}
 
-securityCodeMasked.on("accept", () => {
-  updateSecurityCode(securityCodeMasked.value);
-});
+function updateExpirationDate(date) {
+  const ccExpiration = document.querySelector(".cc-expiration .value");
+
+  ccExpiration.innerText = date.length === 0 ? "02/32" : date;
+}
 
 function updateSecurityCode(code) {
   const ccSecurity = document.querySelector(".cc-security .value");
@@ -127,18 +133,22 @@ cardNumberMasked.on("accept", () => {
   updateCardNumber(cardNumberMasked.value);
 });
 
-function updateCardNumber(number) {
-  const ccNumber = document.querySelector(".cc-number");
-
-  ccNumber.innerText = number.length === 0 ? "1234 5678 9012 3456" : number;
-}
+cardHolderMasked.on("accept", () => {
+  updateCardHolder(cardHolderMasked.value);
+});
 
 expirationDateMasked.on("accept", () => {
   updateExpirationDate(expirationDateMasked.value);
 });
 
-function updateExpirationDate(date) {
-  const ccExpiration = document.querySelector(".cc-expiration .value");
+securityCodeMasked.on("accept", () => {
+  updateSecurityCode(securityCodeMasked.value);
+});
 
-  ccExpiration.innerText = date.length === 0 ? "02/32" : date;
-}
+document.querySelector("form").addEventListener("submit", (event) => {
+  event.preventDefault();
+});
+
+addButton.addEventListener("click", () => {
+  alert("Cartão adicionado!");
+});
