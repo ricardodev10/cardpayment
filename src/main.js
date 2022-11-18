@@ -1,28 +1,32 @@
 import "./css/index.css";
 import IMask from "imask";
 
-const ccBgColor01 = document.querySelector(
-  ".cc-bg svg > g g:nth-child(1) path"
-);
-const ccBgColor02 = document.querySelector(
-  ".cc-bg svg > g g:nth-child(2) path"
-);
-
+const ccBg = document.querySelector(".cc");
 const ccLogo = document.querySelector(".cc-logo span:nth-child(2) img");
 
 function setCardType(type) {
   const colors = {
-    visa: ["#436D99", "#2D57F2"],
-    mastercard: ["#C69347", "#DF6F29"],
-    americanExpress: ["#439946", "#2DF235"],
-    hipercard: ["#784399", "#B32DF2"],
-    elo: ["#994343", "#F22D2D"],
-    default: ["black", "gray"],
+    visa: {
+      ccBg: "url('/public/cc-bg-visa.svg')",
+    },
+    mastercard: {
+      ccBg: "url('/public/cc-bg-mastercard.svg')",
+    },
+    americanExpress: {
+      ccBg: "url('/public/cc-bg-americanExpress.svg')",
+    },
+    hipercard: {
+      ccBg: "url('/public/cc-bg-hipercard.svg')",
+    },
+    elo: {
+      ccBg: "url('/public/cc-bg-elo.svg')",
+    },
+    default: {
+      ccBg: "url('/public/cc-bg-default.svg')",
+    },
   };
 
-  ccBgColor01.setAttribute("fill", colors[type][0]);
-  ccBgColor02.setAttribute("fill", colors[type][1]);
-
+  ccBg.style.backgroundImage = colors[type].ccBg;
   ccLogo.setAttribute("src", `cc-${type}.svg`);
 }
 
