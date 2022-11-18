@@ -20,7 +20,7 @@
 body {
   font-size: 1.6rem;
   /* background: #121214; */
-  background-image: url(../../public/Wallpaper-2560x1600.jpg);
+  background-image: url(/Wallpaper-2560x1600.jpg);
   background-size: cover;
 
   display: flex;

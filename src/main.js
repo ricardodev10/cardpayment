@@ -7,22 +7,22 @@ const ccLogo = document.querySelector(".cc-logo span:nth-child(2) img");
 function setCardType(type) {
   const colors = {
     visa: {
-      ccBg: "url('/public/cc-bg-visa.svg')",
+      ccBg: "url('/cc-bg-visa.svg')",
     },
     mastercard: {
-      ccBg: "url('/public/cc-bg-mastercard.svg')",
+      ccBg: "url('/cc-bg-mastercard.svg')",
     },
     americanExpress: {
-      ccBg: "url('/public/cc-bg-americanExpress.svg')",
+      ccBg: "url('/cc-bg-americanExpress.svg')",
     },
     hipercard: {
-      ccBg: "url('/public/cc-bg-hipercard.svg')",
+      ccBg: "url('/cc-bg-hipercard.svg')",
     },
     elo: {
-      ccBg: "url('/public/cc-bg-elo.svg')",
+      ccBg: "url('/cc-bg-elo.svg')",
     },
     default: {
-      ccBg: "url('/public/cc-bg-default.svg')",
+      ccBg: "url('/cc-bg-default.svg')",
     },
   };
 
