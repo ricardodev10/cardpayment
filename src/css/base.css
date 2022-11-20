@@ -55,3 +55,16 @@ body {
   display: flex;
   align-items: center;
 }
+
+footer {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 32rem;
+}
+
+footer p {
+  display: flex;
+  gap: 0.7rem;
+}
