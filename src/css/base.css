@@ -59,10 +59,16 @@ footer {
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  min-width: 34rem;
 }
 
 footer p {
   display: flex;
   gap: 0.7rem;
+}
+
+@media (max-width: 600px) {
+  footer {
+    min-width: 34rem;
+    bottom: 0;
+  }
 }
