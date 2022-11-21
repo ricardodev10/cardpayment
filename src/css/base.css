@@ -65,10 +65,3 @@ footer p {
   display: flex;
   gap: 0.7rem;
 }
-
-@media (max-width: 600px) {
-  footer {
-    min-width: 34rem;
-    bottom: 0;
-  }
-}

@@ -22,6 +22,12 @@
   }
 }
 
+@media (max-width: 780px) {
+  footer {
+    display: none;
+  }
+}
+
 @media (min-width: 780px) {
   #app {
     grid-template-areas:
