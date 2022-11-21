@@ -59,8 +59,7 @@ footer {
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  min-width: 33rem;
-  margin-top: 2rem;
+  min-width: 34rem;
 }
 
 footer p {
